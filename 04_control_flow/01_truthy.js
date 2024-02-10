@@ -43,3 +43,10 @@
 // Note: " ", In an empty quotation if get an space it will consider as a truthy value
 
 // Note: In a quotation if get any value such as 0, false or space (space will be consider as a value in an empty quotation) then it is a truthy value
+
+
+// Nullish Coalescing Operator (??) to checking Null and Undefined value
+
+// Ternary operator
+let score = "50"
+score === 100 ? console.log("Century") : score == "100" ? console.log("Century") : console.log("Century miss");
