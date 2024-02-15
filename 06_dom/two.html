@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learnign JavaScript DOM</title>
+    </head>
+
+    <body style="background: #333333;color: #f5f5f5;">
+
+        <script>
+            let divElement = document.createElement('div')
+            divElement.className = "wrapper"
+            divElement.id = 'wrapper_id'
+            divElement.setAttribute('title', 'learning javascript DOM')
+            divElement.innerText = "I am learning JavaScript DOM"
+            divElement.style.background = "#ffcfcf"
+            divElement.style.padding = "30px"
+            divElement.style.color = "#202020"
+            document.body.appendChild(divElement)
+
+            function createDivElement(elementName, elementClassName, elementIdName, text, elementBackgroundColor,elementTextColor,elementPadding) {
+                let newElementName = document.createElement(elementName)
+                newElementName.className = elementClassName
+                newElementName.id = elementIdName
+                newElementName.innerText = text
+                newElementName.style.background = elementBackgroundColor
+                newElementName.style.color = elementTextColor
+                newElementName.style.padding = elementPadding
+                document.body.appendChild(newElementName)
+            }
+            let element = 'div'
+            let classAttr = 'my-new-class'
+            let idAttr = 'my-id'
+            let text = "I am learning javascript"
+            let elementBackgroundColor = "#ffcf10"
+            let elementTextColor = "#202020"
+            let elementPadding = "10px 30px"
+            
+            createDivElement(element, classAttr, idAttr, text, elementBackgroundColor, elementTextColor, elementPadding)
+
+        </script>
+    </body>
+
+</html>

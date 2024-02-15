@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body style="background-color: #212121;color: #fff;">
+        <ul class="language">
+            <li>JavaScript</li>
+        </ul>
+
+        <script>
+            // Adding list item in ul
+            function addListItemOne(itemName) {
+                const li = document.createElement('li')
+                li.innerText = `${itemName}`
+                document.querySelector('.language').appendChild(li)
+            }
+
+            function addListItemTwo(itemName) {
+                const li = document.createElement('li')
+                document.querySelector('.language').appendChild(li).innerHTML = itemName
+            }
+            // Adding list item in ul by optimize way
+            function addListItemOpti(itemName) {
+                const li = document.createElement('li')
+                li.appendChild(document.createTextNode(itemName))
+                document.querySelector('.language').appendChild(li)
+                // document.querySelector('.language').appendChild(li).appendChild(document.createTextNode(itemName))
+            }
+            addListItemOne('TypeScript')
+            addListItemOne('Python')
+            addListItemTwo('Ruby')
+            addListItemOpti('C++')
+            addListItemOpti('Golang')
+
+            // Edit list item
+            // const firstItem = document.querySelector('li:first-child')
+            // firstItem.textContent = "Java" 
+            // const newItem = document.createElement('li')
+            // newItem.textContent = "my Java"
+            // newItem.appendChild(document.createTextNode('My java'))
+            // firstItem.replaceWith(newItem)
+
+            function editListItem(itemNumber, newText) {
+                const listItem = document.querySelector(`li:nth-child(${itemNumber})`)
+                const newListItem = document.createElement('li')
+                // newListItem.textContent = `${newText}` // Regular way
+                newListItem.appendChild(document.createTextNode(`${newText}`)) // Optimize way
+                listItem.replaceWith(newListItem)
+            }
+            editListItem(5, 'Nodejs')
+
+            // Remove List Item 
+            // document.querySelector('li:last-child').remove()
+            function removeListItem(itemNumber) {
+                const listItem = document.querySelector(`li:nth-child(${itemNumber})`)
+                listItem.remove()
+            }
+            removeListItem(6)
+        </script>
+    </body>
+
+</html>

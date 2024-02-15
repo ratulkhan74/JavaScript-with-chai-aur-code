@@ -21,7 +21,6 @@
             <h2 class="h2_title">Lorem ipsum dolor sit amet.</h2>
             <h2 class="h2_title">Lorem ipsum dolor sit amet.</h2>
             <h2 class="h2_title">Lorem ipsum dolor sit amet.</h2>
-            <span></span>
             <ul class="list">
                 <li class="list-item">One</li>
                 <li class="list-item">Two</li>
@@ -37,6 +36,12 @@
 
         <!-- Script -->
         <script>
+            let list = document.querySelector('.list')
+            // console.log(list.children.item(0));
+            // console.log(list.children.length);
+            // console.log(list.firstElementChild);
+            let listItem = document.querySelector('.list-item')
+            console.log(listItem.parentElement);
         </script>
     </body>
 
