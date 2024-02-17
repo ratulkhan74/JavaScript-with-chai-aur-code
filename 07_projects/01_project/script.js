@@ -68,9 +68,11 @@ buttons.forEach(function (btn) {
                 break;
             case 'red':
                 body.style.backgroundColor = _id
+                h1.style.color = '#f5f5f5'
                 break;
             case 'purple':
                 body.style.backgroundColor = _id
+                h1.style.color = '#f5f5f5'
                 break;
             default:
                 body.style.backgroundColor = '#2b2d42'
