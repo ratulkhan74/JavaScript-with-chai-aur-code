@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <script src="script.js"></script>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Digital Clock</title>
+        <style>
+            body {
+                background: #0d1b2a;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #clock {
+                font-size: 120px;
+                color: #ffba08;
+                font-weight: 500;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Clock -->
+        <div id="clock"></div>
+
+        <script>
+
+            const clock = document.getElementById('clock');
+
+            setInterval(() => {
+                let date = new Date();
+                let time = date.toLocaleTimeString('en-US');
+                clock.innerHTML = `${time}`;
+            }, 1000);
+
+        </script>
+    </body>
+
 </html>
