@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .change_color {
+                margin-top: 50px;
+            }
+
+            .color--container {
+                width: 100%;
+                height: 500px;
+                background: #ccc;
+                margin-top: 50px;
+            }
+
+            .keydown {
+                margin-top: 30px;
+            }
+
+            .keydown span {
+                text-transform: uppercase;
+                font-size: 15px;
+                background: #ffcf10;
+                padding: 5px;
+                border-radius: 3px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- <button class="change_color">Chnage Color</button> -->
+        <!-- <div class="keydown"></div> -->
+        <div class="color--container"></div>
+
+        <script>
+            const btn = document.querySelector('.change_color');
+            function random(number) {
+                return parseInt(Math.random() * number + 1);
+            }
+
+            // function randomColorChanger() {
+            //     const rgbColor = `rgb(${random(255)},${random(255)},${random(255)})`;
+            //     document.querySelector('.color--container').style.backgroundColor = rgbColor;
+            // }
+            // btn.addEventListener('click', randomColorChanger);
+
+            setInterval(() => {
+                const rgbRandomColor = `rgb(${random(255)},${random(255)},${random(255)})`;
+                const container = document.querySelector('.color--container');
+                container.style.backgroundColor = rgbRandomColor;
+            }, 2000);
+
+        </script>
+    </body>
+
+</html>
