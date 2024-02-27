@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <h1>Learning javascript</h1>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+
+        <button id="myFriend">Add Friend</button>
+
+
+        <script>
+            const intervelStartter = document.querySelector('#start');
+            const intervelStopper = document.querySelector('#stop');
+
+            let intervelSetter;
+            function startIntervel() {
+                const intervel = function () {
+                    document.querySelector('h1').innerHTML = 'Start Intervel';
+                }
+                intervelSetter = setInterval(intervel, 1000);
+            }
+
+            function stopIntervel() {
+                clearInterval(intervelSetter);
+                document.querySelector('h1').innerHTML = 'Intervel STOPPED';
+            }
+
+            intervelStartter.addEventListener('click', startIntervel);
+            intervelStopper.addEventListener('click', stopIntervel);
+
+
+            const friendRequestBtn = document.querySelector('#myFriend');
+
+            friendRequestBtn.style.backgroundColor = 'blue';
+            friendRequestBtn.style.color = '#fff';
+            friendRequestBtn.style.border = 'none';
+            friendRequestBtn.style.padding = '10px 15px';
+            friendRequestBtn.style.borderRadius = '5px';
+            friendRequestBtn.style.cursor = 'pointer';
+            friendRequestBtn.style.fontSize = '16px';
+
+
+            friendRequestBtn.addEventListener('click', function (e) {
+                if (this.innerHTML === "Unfriend") {
+                    this.innerHTML = "Add Friend";
+                    this.style.backgroundColor = 'blue';
+                    document.querySelector('h1').innerHTML = 'Stranger';
+                } else {
+                    this.innerHTML = "Unfriend";
+                    this.style.backgroundColor = 'green';
+                    document.querySelector('h1').innerHTML = 'Friends';
+                }
+            })
+
+        </script>
+    </body>
+
+</html>
