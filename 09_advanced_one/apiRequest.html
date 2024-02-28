@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                background: #313131;
+                color: #f5f5f5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            .card {
+                max-width: 220px;
+                width: 100%;
+                border-radius: 10px;
+                padding: 30px 15px;
+                background: #222;
+                text-align: center;
+                line-height: 1.5;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            #user_avatar img {
+                max-width: 120px;
+                width: 100%;
+                height: 120px;
+                border-radius: 10px;
+                margin: auto;
+                display: table;
+                border: 3px solid #313131;
+                margin-bottom: 15px;
+            }
+
+            #name {
+                text-transform: uppercase;
+                font-size: 18px;
+                font-weight: 500;
+                margin: 0;
+            }
+
+            #username {
+                font-size: 14px;
+                margin: 0;
+                margin-top: 10px;
+                text-transform: uppercase;
+                font-weight: 400;
+            }
+
+            #followers {
+                text-transform: uppercase;
+                font-weight: 300;
+                background: #313131;
+                padding: 5px 8px;
+                display: inline-block;
+                border-radius: 5px;
+                margin: 0;
+                margin-top: 10px;
+            }
+
+            #view_gitgub {
+                display: block;
+                color: #212121;
+                border-radius: 5px;
+                background: #cfcf;
+                text-decoration: none;
+                padding: 3px 10px;
+                max-width: 120px;
+                margin: 20px auto 0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <form class="card">
+                <label for="githubuser">Github Username</label>
+                <br>
+                <input type="text" placeholder="@username" value="" id="githubuser">
+            </form>
+            <br>
+            <br>
+
+            <div class="card">
+                <div id="user_avatar"></div>
+                <h3 id="name"></h3>
+                <h5 id="username"></h5>
+                <h5 id="followers"></h5>
+                <a target="_blank" id="view_gitgub">Visite</a>
+            </div>
+
+        </div>
+
+        <script>
+            // Query Selectors
+            const userAvatar = document.querySelector('#user_avatar');
+            const name = document.querySelector('#name');
+            const username = document.querySelector('#username');
+            const githubFollowers = document.querySelector('#followers');
+            const visiteGit = document.querySelector('#view_gitgub');
+            const githubuser = document.querySelector('#githubuser');
+
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const githubUser = `${githubuser.value}`;
+                if (githubUser) {
+                    // Request URL
+                    const requestURL = `https://api.github.com/users/${githubUser}`;
+                    const user = new XMLHttpRequest();
+                    user.open('GET', requestURL);
+                    user.onreadystatechange = function () {
+                        if (user.readyState === 4 && user.status === 200) {
+                            const data = JSON.parse(this.response);
+                            userAvatar.innerHTML = `<img src='${data.avatar_url}' alt="${data.name}">`;
+                            name.innerHTML = `${data.name}`;
+                            username.innerHTML = `Username: ${data.login}`;
+                            githubFollowers.innerHTML = `followers: ${data.followers}`;
+                            visiteGit.setAttribute('href', `${data.html_url}`);
+                        }
+                    }
+                    user.send();
+                    
+                }
+            })
+
+
+        </script>
+    </body>
+
+</html>
