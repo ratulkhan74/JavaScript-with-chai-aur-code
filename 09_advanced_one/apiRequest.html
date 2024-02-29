@@ -26,10 +26,10 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
             }
 
-            #user_avatar img {
-                max-width: 120px;
+            #user_avatar {
+                max-width: 100px;
                 width: 100%;
-                height: 120px;
+                height: 100px;
                 border-radius: 10px;
                 margin: auto;
                 display: table;
@@ -83,32 +83,20 @@
                 <label for="githubuser">Github Username</label>
                 <br>
                 <input type="text" placeholder="@username" value="" id="githubuser">
+                <input type="submit" value="submit">
             </form>
             <br>
             <br>
-
-            <div class="card">
-                <div id="user_avatar"></div>
-                <h3 id="name"></h3>
-                <h5 id="username"></h5>
-                <h5 id="followers"></h5>
-                <a target="_blank" id="view_gitgub">Visite</a>
-            </div>
+            <!-- github info -->
+            <div class="info-card"></div>
 
         </div>
 
         <script>
-            // Query Selectors
-            const userAvatar = document.querySelector('#user_avatar');
-            const name = document.querySelector('#name');
-            const username = document.querySelector('#username');
-            const githubFollowers = document.querySelector('#followers');
-            const visiteGit = document.querySelector('#view_gitgub');
             const githubuser = document.querySelector('#githubuser');
-
             document.querySelector('form').addEventListener('submit', function (e) {
                 e.preventDefault();
-                const githubUser = `${githubuser.value} ? ${githubuser.value} : ratulkhan74 `;
+                const githubUser = `${githubuser.value}`;
                 if (githubUser) {
                     const requestURL = `https://api.github.com/users/${githubUser}`;
                     const user = new XMLHttpRequest();
@@ -116,11 +104,15 @@
                     user.onreadystatechange = function () {
                         if (user.readyState === 4 && user.status === 200) {
                             const data = JSON.parse(this.response);
-                            userAvatar.innerHTML = `<img src='${data.avatar_url}' alt="${data.name}">`;
-                            name.innerHTML = `${data.name}`;
-                            username.innerHTML = `Username: ${data.login}`;
-                            githubFollowers.innerHTML = `followers: ${data.followers}`;
-                            visiteGit.setAttribute('href', `${data.html_url}`);
+                            document.querySelector('.info-card').innerHTML = `
+                            <div class="card">
+                            <img id="user_avatar" src='${data.avatar_url}' alt="${data.name}">
+                            <h3 id="name">${data.name}</h3>
+                            <h5 id="username">Username: ${data.login}</h5>
+                            <h5 id="followers">followers: ${data.followers}</h5>
+                            <a href="${data.html_url}" target="_blank" id="view_gitgub">visite Github</a>
+                            </div>
+                            `;
                         }
                     }
                     user.send();
