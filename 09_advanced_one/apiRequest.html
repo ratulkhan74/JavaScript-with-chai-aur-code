@@ -108,9 +108,8 @@
 
             document.querySelector('form').addEventListener('submit', function (e) {
                 e.preventDefault();
-                const githubUser = `${githubuser.value}`;
+                const githubUser = `${githubuser.value} ? ${githubuser.value} : ratulkhan74 `;
                 if (githubUser) {
-                    // Request URL
                     const requestURL = `https://api.github.com/users/${githubUser}`;
                     const user = new XMLHttpRequest();
                     user.open('GET', requestURL);
@@ -125,10 +124,8 @@
                         }
                     }
                     user.send();
-                    
                 }
             })
-
 
         </script>
     </body>
