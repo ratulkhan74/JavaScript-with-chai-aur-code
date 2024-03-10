@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Closure</title>
+    </head>
+
+    <body style="background-color: #424242;">
+
+        <button id="orange">Orange</button>
+        <button id="green">Green</button>
+        <button id="yellow">yellow</button>
+        <button id="red">red</button>
+        <button id="blue">blue</button>
+        <button id="black">black</button>
+
+        <script>
+            // Lexical Scope
+            // function outerFunc() { // Parent function scope
+            //     let name = 'Ratul'; // Variable in global scope
+            //     function innerFunc() { // Inner function scope
+            //         // Inner Function Scope has the ability to access variable from the parent function scope.
+            //         console.log('Inner Function', name);
+            //         function innerMostFunc() { // Inner most function scope
+            //             // Inner most function has the ability to access variable from the outer most function scope (Outer parent).
+            //             console.log('Inner most function', name);
+            //         }
+            //         innerMostFunc();
+            //     }
+            //     innerFunc();
+            // }
+            // outerFunc();
+        </script>
+
+        <script>
+            // Clousre
+            // function numberGenerator() {
+            //     // Local “free” variable that ends up within the closure
+            //     let num = 1;
+            //     function checkNumber() {
+            //         console.log(num);
+            //     }
+            //     num++;
+            //     return checkNumber;
+            // }
+            // let number = numberGenerator();
+            // number();
+
+            // document.getElementById('orange').onclick = function(){
+            //     document.body.style.backgroundColor = `orange`;
+            // }
+
+            let colors = ['orange', 'green', 'yellow', 'red', 'blue', 'black'];
+            // Example of clousre
+            function clickHandler(...colors) {
+                return function () {
+                    colors.forEach(color => {
+                        document.body.style.backgroundColor = `${color}`;
+                    })
+                }
+            }
+
+            document.getElementById('orange').onclick = clickHandler('orange');
+            document.getElementById('green').onclick = clickHandler('green');
+            document.getElementById('yellow').onclick = clickHandler('yellow');
+            document.getElementById('red').onclick = clickHandler('red');
+            document.getElementById('blue').onclick = clickHandler('blue');
+            document.getElementById('black').onclick = clickHandler('black');
+
+        </script>
+    </body>
+
+</html>
