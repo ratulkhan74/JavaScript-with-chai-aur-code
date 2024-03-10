@@ -15,6 +15,7 @@
         <button id="red">red</button>
         <button id="blue">blue</button>
         <button id="black">black</button>
+        <button id="F36364">pink</button>
 
         <script>
             // Lexical Scope
@@ -52,22 +53,29 @@
             //     document.body.style.backgroundColor = `orange`;
             // }
 
-            let colors = ['orange', 'green', 'yellow', 'red', 'blue', 'black'];
+            let colors = ['orange', 'green', 'yellow', 'red', 'blue', 'black', '#F36364'];
+            let seclectors = ['orange', 'green', 'yellow', 'red', 'blue', 'black', 'F36364'];
+            
             // Example of clousre
             function clickHandler(...colors) {
                 return function () {
-                    colors.forEach(color => {
-                        document.body.style.backgroundColor = `${color}`;
-                    })
+                    if (Array.isArray(seclectors)) {
+                        colors.forEach(color => {
+                            document.body.style.backgroundColor = `${color}`;
+                        })
+                    }
                 }
             }
 
-            document.getElementById('orange').onclick = clickHandler('orange');
-            document.getElementById('green').onclick = clickHandler('green');
-            document.getElementById('yellow').onclick = clickHandler('yellow');
-            document.getElementById('red').onclick = clickHandler('red');
-            document.getElementById('blue').onclick = clickHandler('blue');
-            document.getElementById('black').onclick = clickHandler('black');
+            function buttonHandler(...seclectors) {
+                if (Array.isArray(seclectors)) {
+                    seclectors.forEach((seclector, index) => {
+                        let color = colors[index];
+                        document.getElementById(seclector).onclick = clickHandler(color);
+                    })
+                }
+            }
+            buttonHandler(...seclectors);
 
         </script>
     </body>
