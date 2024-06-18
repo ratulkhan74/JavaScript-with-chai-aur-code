@@ -59,7 +59,7 @@
             // Example of clousre
             function clickHandler(...colors) {
                 return function () {
-                    if (Array.isArray(seclectors)) {
+                    if (Array.isArray(colors)) {
                         colors.forEach(color => {
                             document.body.style.backgroundColor = `${color}`;
                         })
